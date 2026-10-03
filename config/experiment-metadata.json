@@ -1,0 +1,66 @@
+{
+  "projectName": "CPFedST - Continual Personalized Federated Side-Tuning with Knowledge-Aware Update Routing",
+  "basePaper": "Personalized Federated Side-Tuning for Medical Image Classification",
+  "paper": {
+    "authors": "Jiayi Chen et al.",
+    "venue": "MICCAI 2025",
+    "doi": "10.1007/978-3-032-05185-1_44",
+    "officialCode": "https://github.com/JiayiChen815/pFedST"
+  },
+  "model": {
+    "backbone": "CLIP ViT-B/16",
+    "trainableSideParameters": 2139792,
+    "clients": [0, 1, 2, 3],
+    "classes": [
+      "melanoma",
+      "melanocytic nevus",
+      "basal cell carcinoma",
+      "actinic keratosis",
+      "benign keratosis",
+      "dermatofibroma",
+      "vascular lesion",
+      "squamous cell carcinoma"
+    ],
+    "promptTemplate": "a photo of {class}."
+  },
+  "training": {
+    "roundsStage2": 3,
+    "localEpochs": 1,
+    "batchSize": 8,
+    "stageSamplesPerClient": 500,
+    "maxTestSamplesPerClient": 200,
+    "learningRate": 0.0001,
+    "gradientAccumulation": 1,
+    "prototypeHighThreshold": 0.9,
+    "gradientConflictThreshold": -0.5
+  },
+  "finalE4v4": {
+    "stage1BaccBefore": 0.3655,
+    "stage1BaccAfter": 0.3525,
+    "baccForgetting": 0.0131,
+    "stage1MacroF1Before": 0.2471,
+    "stage1MacroF1After": 0.2005,
+    "macroF1Forgetting": 0.0466,
+    "stage2Bacc": 0.3504,
+    "stage2MacroF1": 0.1987,
+    "routing": {
+      "global": 220,
+      "local": 498,
+      "protect": 38,
+      "total": 756,
+      "globalPct": 29.1005,
+      "localPct": 65.873,
+      "protectPct": 5.0265
+    },
+    "roundwiseBacc": [
+      0.2338,
+      0.2839,
+      0.3504
+    ],
+    "roundwiseMacroF1": [
+      0.1928,
+      0.2066,
+      0.1987
+    ]
+  }
+}

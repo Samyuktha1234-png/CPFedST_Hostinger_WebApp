@@ -1,0 +1,1 @@
+The final 3 GB checkpoint is intentionally kept outside Git by default. Use Git LFS only if you explicitly need versioned large-file storage and your GitHub plan/storage budget supports it.
